@@ -1,9 +1,36 @@
 # EffDB
 
-Example Elixir Application integrating with FoundationDB. Why? Because FDB is the coolest thing to me since BEAM.
+A record layer over FoundationDB in Elixir.
 
-# Notes
+**Status** literally toxic for your data, do not use.
 
-Totally in prototyping phase and like learning.
+## Usage
 
-Currently, this really only supports saving a struct and fetching it. Indexes are coming next.
+### Defining a table
+
+```elixir
+defmodule MyApp.Models.User
+use EffDB.Table
+
+table("users", id: :string, email: :string)
+```
+
+### Using the table
+
+
+```elixir
+alias MyApp.Models.User
+bozo = %User{id: UUID.uuid4(:hex), email: "me(at)tehprofessor"}
+EffDB.Storage.insert(User, bozo)
+```
+
+```elixir
+alias MyApp.Models.User
+bozo_id = UUID.uuid4(:hex)
+EffDB.Storage.get(User, user_id)
+```
+
+```elixir
+alias MyApp.Models.User
+EffDB.Storage.all(User)
+```

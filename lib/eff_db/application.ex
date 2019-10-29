@@ -1,30 +1,28 @@
 defmodule EffDB.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
-  @fdb_version 610 # Currently max supported API version
-  @cluster_file "/usr/local/etc/foundationdb/fdb.cluster"
-
   def start(_type, _args) do
+    fdb_version = EffDB.Config.fdb_version()
+    cluster_file = EffDB.Config.cluster_file()
+
     # This can only happen once, or it'll kill the application.
-    :ok = start_fdb!(@fdb_version)
+    :ok = start_fdb!(fdb_version)
 
     children = [
-      # Starts a worker by calling: EffDB.Worker.start_link(arg)
-      # {EffDB.Worker, arg},
-      {EffDB.ConnectionManager, [@cluster_file]},
+      {EffDB.MetaDataServer, {cluster_file, meta_data_server_context()}},
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: EffDB.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   defp start_fdb!(version) do
     :ok = FDB.start(version)
+  end
+
+  defp meta_data_server_context do
+    %{storable: EffDB.Config.storable(), transactable: EffDB.Config.transactable()}
   end
 end

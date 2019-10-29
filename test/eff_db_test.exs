@@ -2,7 +2,7 @@ defmodule EffDBTest do
   use ExUnit.Case
   doctest EffDB
 
-  test "greets the world" do
-    assert EffDB.hello() == :world
+  test "fuck yeah" do
+    assert EffDB.fuck() == :yeah
   end
 end

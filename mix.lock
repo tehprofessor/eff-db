@@ -1,7 +1,10 @@
 %{
+  "argon2_elixir": {:hex, :argon2_elixir, "2.1.0", "649cc781b4b32b72eca8bb4a3cba4bd1c02698163bb6a6e51015340d3ef342b9", [:make, :mix], [{:comeonin, "~> 5.1", [hex: :comeonin, repo: "hexpm", optional: false]}, {:elixir_make, "~> 0.5", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
+  "comeonin": {:hex, :comeonin, "5.1.2", "fbbbbbfcf0f0e9900c0336d16c8d462edf838ba1759577e29cc5fbd7c28a4540", [:mix], [], "hexpm"},
   "crypto_rand": {:hex, :crypto_rand, "1.0.2", "e1381d3fbe743cfb6082150f4f95dc7ac3fcaf5b53dae0fc96f7e0f006d91dd1", [:mix], [], "hexpm"},
   "elixir_make": {:hex, :elixir_make, "0.6.0", "38349f3e29aff4864352084fc736fa7fa0f2995a819a737554f7ebd28b85aaab", [:mix], [], "hexpm"},
   "elixir_uuid": {:hex, :elixir_uuid, "1.2.0", "ff26e938f95830b1db152cb6e594d711c10c02c6391236900ddd070a6b01271d", [:mix], [], "hexpm"},
+  "faker": {:hex, :faker, "0.13.0", "8abcb996f010ccd6c85588c89fc047f11134e04da019b70252f95431d721a3dc", [:mix], [], "hexpm"},
   "fdb": {:hex, :fdb, "6.1.8-0", "365cde1d2df5688cf2257af1842c12b1d553dd1253fd7630575bc157c5e25ad5", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}, {:sweet_xml, "~> 0.6", [hex: :sweet_xml, repo: "hexpm", optional: false]}], "hexpm"},
   "puid": {:hex, :puid, "1.0.2", "ed4240ff59a03d3387a77dd691419023ad899efac4b0ebada1cdeb376d7623b3", [:mix], [{:crypto_rand, "~> 1.0", [hex: :crypto_rand, repo: "hexpm", optional: false]}], "hexpm"},
   "sweet_xml": {:hex, :sweet_xml, "0.6.6", "fc3e91ec5dd7c787b6195757fbcf0abc670cee1e4172687b45183032221b66b8", [:mix], [], "hexpm"},

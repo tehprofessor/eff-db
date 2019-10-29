@@ -33,9 +33,9 @@ defmodule EffDB.Schematic do
 
   def table_coder(mod) do
     table_subspace = new_subspace(mod.table_name())
-    table_fields = mod.table_fields()
+    table_tuple = mod.table_tuple()
 
-    FDB.Transaction.Coder.new(table_subspace, table_fields)
+    FDB.Transaction.Coder.new(table_subspace, table_tuple)
   end
 end
 
@@ -57,7 +57,7 @@ defmodule EffDB.Constraint do
 
   def uniqueness(tr, key, _data) do
     if Transaction.get(tr, key) do
-      {:error, :not_unique_key, key}
+      {:error, {:not_unique_key, key}}
     else
       {:ok, nil}
     end
